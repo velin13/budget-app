@@ -1,0 +1,13 @@
+<form name="loginForm" method="post" action="login">
+    <h1 class="headings">Login</h1>
+    <p class="error">
+        {{errMessage}}
+    </p>
+    <label>Username</label>
+    <input type="text" name="username" required />
+    <label>Password</label>
+    <input type="password" name="password" required />
+    <input type="submit" value="Login"/>
+</form>
+
+<p>Don't have an account? <a href="/signup"> Sign up </a></p>

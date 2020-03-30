@@ -1,0 +1,33 @@
+<script>
+    const passwordCheck = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9]{8,}$/
+
+    function validateSignup(event) {
+        var form = document.getElementsByName('signupForm')[0];
+        if (!(form.pre_password.value === form.password.value)) {
+            document.getElementById('error').innerText = 'Oops! Passwords are not the same!'
+            event.preventDefault();
+        } else if (!(Boolean(passwordCheck.exec(form.password.value)))) {
+            document.getElementById('error').innerText = 'Password needs at least 1 digit and atleast 8 charcters'
+            event.preventDefault();
+        }
+    }
+    window.onload = function () {
+        document.signupForm.onsubmit = validateSignup;
+    }
+</script>
+<form name="signupForm" method="post" action='signup'>
+    <h1 class="headings">Sign up</h1>
+    <p id="error" class="error">
+        {{ errMessage }}
+    </p>
+    <label>Username</label>
+    <input type="text" name="username" required />
+    <label>Email</label>
+    <input type="email" name="email" required />
+    <label>Password</label>
+    <input type="password" name="pre_password" id="pass" required />
+    <label>Re-enter password</label>
+    <input type="password" name="password" required />
+    <input type="submit" value="Sign Up" />
+</form>
+<p>Already have an account? <a href="/login"> Sign in!</a></p>

@@ -1,0 +1,14 @@
+[Unit]
+Description=budget-app
+After=network.target
+[Service]
+ExecStart=/budget-app/app.js
+Restart=always
+User=nobody
+Group=nogroup
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/budget-app
+
+[Install]
+WantedBy=multi-user.target
